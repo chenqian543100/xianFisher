@@ -24,5 +24,12 @@ gulp.task("watchall",async ()=>{
         gulp.src("img/**/*")
         .pipe(gulp.dest("D:\\phpStudy\\WWW\\xianFisher\\img"))
     })
- 
+    gulp.watch("js/*.js",async ()=>{
+        gulp.src("js/*.js")
+        .pipe(gulp.dest("D:\\phpStudy\\WWW\\xianFisher\\js"))
+    })
+    gulp.watch("*.php",async ()=>{
+        gulp.src("*.php")
+        .pipe(gulp.dest("D:\\phpStudy\\WWW\\xianFisher"))
+    })
 })

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>注册页面</title>
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
@@ -23,14 +23,114 @@
     <div class="banner">
         <div>
             <h4>注册会员</h4>
-            <span>账号:</span><input type="text" id="username" placeholder="请输入电话号/QQ"><br>
-            <span>密码:</span><input type="text" id="pass" placeholder="请输密码"><br>
-            <span>确认密码:</span><input type="text" id="rePass"><br>
+            <span>账号:</span><input type="text" id="username" name="username" onblur="checkuser(this)"><br>
+            <span>密码:</span><input type="text" id="userpass" name="userpass"><br>
+            <span>确认密码:</span><input type="text" id="checkpass"><br>
             <input type="button" id="btn01" value="验证码"><input type="text" id="ma"><span id="yanMa"></span><br>
-            <a href="#">注册</a>
+            <input type="button" id="btn02" value="注册">
+            
+            <a href="index2.html">去登录</a>
             <a href="#">微博登录</a>
             <a href="#">支付宝登录</a>
         </div>
     </div>
+    <!-- footer -->
+    <div class="footer"></div>
+
 </body>
 </html>
+<script>
+// 随机生成四位数
+
+$("#btn01").onclick=function(){
+	//1、随机生成4位以内的数，
+    f1();
+}
+function f1(){
+    let n = parseInt(Math.random()*10000)+1;
+	let  num=0;
+	for(let i=0;i<n;i++){
+		let temp = parseInt(Math.random()*10);//8   2   3
+		num = num*10+temp;//8   82   823
+	}
+	
+	//2、然后输出该数字有多少位，每位分别是什么？
+	let arr = [];
+	let temp = num;
+	while(temp>0){
+		arr.unshift(temp%10);
+		temp = parseInt(temp/10);
+	}
+    console.log(n);
+    document.getElementById("yanMa").innerHTML=n;
+}
+
+$("#btn02").onclick=function(){
+    check();
+    let xhr=new XMLHttpRequest();
+
+    xhr.open("post","register.php",true);
+
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4 && xhr.Status==200){
+            if(xhr.responseText=="-1"){
+                // $("#msgBox").style.color="red";
+                // $("#msgBox").innerHTML="用户名被人使用";
+                alert("用户名被人使用");
+            }else if(xhr.responseText=="0"){
+                // $("#msgBox").style.color="red";
+                // $("#msgBox").innerHTML="注册失败";
+                alert("注册失败");
+            }else if(xhr.responseText=="1"){
+                // $("#msgBox").style.color="greenyellow";
+                // $("#msgBox").innerHTML="注册成功。请登录<a href='index2.html'></a>";
+                alert("请登录");
+            }
+        }
+    }
+    //post方式：设置请求头
+    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    //post方式：把传给服务器端数据（键值对）放在send函数的参数里。
+    let sendstr=`username=${$("#username").value} & userpass=${$("#userpass").value}`;
+    xhr.send(sendstr);
+}
+
+
+function checkuser(obj){
+    let xhr=new XMLHttpRequest();
+
+    xhr.open("get","checkuser.php?username="+$("#username").value,true);
+
+    xhr.onreadystatechange=function(){
+        console.log(xhr.responseText);
+        alert(xhr.responseText);
+        if(xhr.readyState==4 && xhr.status==200){
+            obj.nextElementSibling.innerHTML=xhr.responseText;
+        }
+    }
+    xhr.send();
+}
+
+function check(){
+    if($("#username").value=="" || $("#userpass").value=="" ||$("#checkpass").value==""){
+        alert("亲，请输入完整的信息");
+        return false;
+    }
+}
+
+
+
+
+
+
+
+function $(str){
+	if(str.charAt(0)=="#"){
+		return document.getElementById(str.substring(1));
+	}else if(str.charAt(0)=="."){
+		return document.getElementsByClassName(str.substring(1));
+	}else{
+		return document.getElementsByTagName(str);
+	}
+}	
+</script>
