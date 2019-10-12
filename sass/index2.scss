@@ -1,0 +1,147 @@
+body,p,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,hr,td,input,textarea{
+	margin:0;
+	padding:0;
+}
+ul,ol,li{
+	list-style: none;
+}
+a{
+	text-decoration:none;
+}
+img{
+	border:none;
+	display: block;
+}
+body{
+    font-family: "微软雅黑";
+    background-color: #cccccc;
+}
+html,body{
+	height: 100%;
+}
+/* header */
+.header{
+    width:100%;
+    height: 90px;
+    background-color: white;
+    overflow: hidden;
+
+}
+.logo{
+    width: 100px;
+    height: 60px;
+    /* background-color: #cccccc; */
+    /* background: url(../img/18.png) center top no-repeat;
+    background-size: 100px 40px; */
+    margin: 24px 0 0 76px;
+    float: left;
+}
+.logo img{
+    width: 100px;
+    height: 40px;
+}
+.logo h3{
+    color: #333;
+    font-size: 16px;
+}
+.header p{
+    width:910px;
+    height: 30px;
+    background-color: white;
+    float: left;
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+    line-height: 30px;
+    margin: 22px 0 0 96px;
+    border:1px solid #ff9999;
+}
+/* banner */
+.banner{
+    width: 100%;
+    height: 596px;
+    /* background-color: #ffcc33; */
+    background: url(../img/2.png) center center no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+
+}
+.denglu {
+     width: 350px;
+     height: 350px;
+     background-color: white;
+     margin: 174px auto;
+     overflow: hidden;
+}
+.denglu h3{
+    margin-top: 36px;
+    margin-left: 24px;
+    margin-bottom:30px;
+}
+.denglu span{
+    margin-left: 24px;
+    width: 68px;
+    height: 40px;
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.denglu input{
+    width: 260px;
+    height: 36px;
+    margin-bottom: 20px;
+}
+.denglu a{
+    display: block;
+    width: 308px;
+    height: 38px;
+    color: white;
+    font-size: 18px;
+    background-color: darkorange;
+    text-align: center;
+    line-height: 38px;
+    margin-left: 24px;
+    border-radius: 4px;
+}
+/* footer */
+.footer{
+    width:100%;
+    height: 230px;
+    background-color: aliceblue;
+    overflow: hidden;
+}
+.footer p{
+    width: 1200px;
+    height: 44px;
+    margin: 0 auto;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    line-height: 44px;
+    margin-top: 60px;
+}
+.footer p a{
+    color: #333;
+    font-size: 14px;
+    margin: 0 8px;
+}
+.footer p a:hover{
+    color: #f30;
+}
+/* footer_txt */
+.footer_txt{
+    width: 1200px;
+    height: 30px;
+    /* background-color: coral; */
+    margin:10px auto 0;
+    line-height: 30px;
+}
+.footer_txt a{
+    color: #333;
+    font-size: 14px;
+    margin: 0 6px;
+}
+.footer_txt div span{
+    margin: 0 6px;
+    color: #333;
+    font-size: 14px;
+}
